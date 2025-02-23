@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://aryanshandilya.vercel.app
+
+# Sitemaps
+Sitemap: https://aryanshandilya.vercel.app/sitemap.xml
