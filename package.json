@@ -1,0 +1,65 @@
+{
+  "name": "portfolio",
+  "version": "2.6.0",
+  "description": "Personal portfolio built with Next.js, Typescript & TailwindCSS, hosted on Vercel",
+  "repository": {
+    "type": "git",
+    "url": "git+"
+  },
+  "keywords": [
+    "Aryan Shandilya, Web Developer, shandilyaaryan, aryanshandilya.vercel.app, portfolio"
+  ],
+  "author": {
+    "name": "Aryan Shandilya",
+    "email": "aryanshandilya10@gmail.com",
+    "url": "https://github.com/shandilyaaryan"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shandilyaaryan/portfolio/issues"
+  },
+  "homepage": "https://github.com/shandilyaaryan/portfolio#readme",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "postbuild": "next build && next-sitemap --config sitemap.config.js",
+    "start": "next start",
+    "lint": "next lint",
+    "types": "tsc --noemit"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^3.9.0",
+    "framer-motion": "^11.3.31",
+    "hamburger-react": "^2.5.1",
+    "lenis": "^1.1.13",
+    "lucide-react": "^0.437.0",
+    "next": "14.2.7",
+    "next-sitemap": "^4.2.3",
+    "next-themes": "^0.3.0",
+    "nodemailer": "^6.9.14",
+    "pnpm": "^10.4.1",
+    "react": "18.3.1",
+    "react-animated-cursor": "^2.11.2",
+    "react-dom": "18.3.1",
+    "react-google-recaptcha": "^3.1.0",
+    "react-hook-form": "^7.53.0",
+    "react-hot-toast": "^2.4.1",
+    "react-snowfall": "^1.2.1",
+    "sass": "^1.77.8",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22",
+    "@types/nodemailer": "^6.4.15",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@types/react-google-recaptcha": "^2.1.9",
+    "autoprefixer": "^10.4.20",
+    "eslint": "8.0.0",
+    "eslint-config-next": "14.2.7",
+    "postcss": "^8.4.41",
+    "tailwindcss": "^3.4.10",
+    "typescript": "^5"
+  }
+}
