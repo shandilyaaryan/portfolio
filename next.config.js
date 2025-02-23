@@ -14,7 +14,7 @@ const nextConfig = {
 			{
 				source: "/resume",
 				destination:
-					"resume.pdf",
+					"https://drive.google.com/file/d/1I4EfUrveLIjdcwRPaZnm5iFrEUGs3sGv/view?usp=drive_link",
 				permanent: true,
 			},
 		];
