@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import "./globals.scss";
 
 import BlobAnimation from "@/lib/blobanimation/BlobAnimation";
-import Cloudflare from "@/lib/common/Cloudflare";
 import Cursor from "@/lib/common/Cursor";
 import Footer from "@/lib/common/Footer";
 import HeadDetails from "@/lib/common/headDetails";
@@ -44,7 +43,6 @@ function MyApp({ Component, pageProps }: AppProps) {
 					font-family: ${raisonne.style.fontFamily};
 				}
 			`}</style>
-			<Cloudflare />
 			<LenisLayout>
 				<MotionProvider>
 					<NextThemeProvider>
