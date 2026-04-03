@@ -3,6 +3,7 @@ import { ProfileHeader } from "@/components/profile-header";
 import { Overview } from "@/components/overview";
 import { SocialLinks } from "@/components/social-links";
 import { About } from "@/components/about";
+import { GitHubContributions } from "@/components/github-contributions";
 import { Separator } from "@/components/separator";
 
 export default function Home() {
@@ -15,6 +16,8 @@ export default function Home() {
       <SocialLinks />
       <Separator />
       <About />
+      <Separator />
+      <GitHubContributions />
       <Separator />
     </main>
   );
