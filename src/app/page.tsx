@@ -1,6 +1,7 @@
 import { ProfileCover } from "@/components/profile-cover";
 import { ProfileHeader } from "@/components/profile-header";
 import { Overview } from "@/components/overview";
+import { SocialLinks } from "@/components/social-links";
 import { Separator } from "@/components/separator";
 
 export default function Home() {
@@ -10,6 +11,8 @@ export default function Home() {
       <ProfileHeader />
       <Separator />
       <Overview />
+      <SocialLinks />
+      <Separator />
     </main>
   );
 }
