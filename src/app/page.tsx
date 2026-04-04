@@ -6,6 +6,7 @@ import { About } from "@/components/about";
 import { GitHubContributions } from "@/components/github-contributions";
 import { TechStack } from "@/components/tech-stack";
 import { Experiences } from "@/components/experiences";
+import { Projects } from "@/components/projects";
 import { Separator } from "@/components/separator";
 
 export default function Home() {
@@ -24,6 +25,8 @@ export default function Home() {
       <TechStack />
       <Separator />
       <Experiences />
+      <Separator />
+      <Projects />
       <Separator />
     </main>
   );

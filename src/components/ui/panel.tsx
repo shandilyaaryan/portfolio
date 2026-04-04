@@ -16,7 +16,7 @@ export function Panel({ className, ...props }: React.ComponentProps<"section">) 
 export function PanelHeader({ className, ...props }: React.ComponentProps<"header">) {
   return (
     <header
-      className={cn("screen-line-bottom px-4 py-3", className)}
+      className={cn("screen-line-bottom px-4", className)}
       {...props}
     />
   );
@@ -25,7 +25,7 @@ export function PanelHeader({ className, ...props }: React.ComponentProps<"heade
 export function PanelTitle({ className, ...props }: React.ComponentProps<"h2">) {
   return (
     <h2
-      className={cn("text-2xl font-semibold tracking-tight", className)}
+      className={cn("text-3xl font-semibold tracking-tight", className)}
       {...props}
     />
   );

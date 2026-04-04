@@ -101,7 +101,7 @@ export function Experiences() {
 
                   {/* Description */}
                   {position.description && (
-                    <p className="pl-9 text-sm text-muted-foreground leading-relaxed">
+                    <p className="pl-9 text-sm text-foreground leading-relaxed">
                       {position.description}
                     </p>
                   )}
