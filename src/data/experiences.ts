@@ -12,6 +12,7 @@ export type Experience = {
   id: string;
   companyName: string;
   companyWebsite?: string;
+  companyLogo?: string;
   isCurrentEmployer?: boolean;
   positions: Position[];
 };
@@ -21,6 +22,7 @@ export const EXPERIENCES: Experience[] = [
     id: "dataring",
     companyName: "Dataring",
     companyWebsite: "https://getdataring.com",
+    companyLogo: "/dataring-icon.png",
     isCurrentEmployer: true,
     positions: [
       {

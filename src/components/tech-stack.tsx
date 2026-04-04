@@ -44,7 +44,6 @@ function TechIcon({ tech }: { tech: Tech }) {
     );
   }
 
-  // chanhdai CDN
   if (tech.theme) {
     return (
       <>
