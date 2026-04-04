@@ -176,12 +176,13 @@ function ProjectDescription({ text }: { text: string }) {
   };
 
   lines.forEach((line, i) => {
-    if (line.startsWith("- ")) {
-      bulletBuffer.push(line.slice(2));
+    const trimmed = line.trim();
+    if (trimmed.startsWith("- ")) {
+      bulletBuffer.push(trimmed.slice(2));
     } else {
       flushBullets(`bullets-${i}`);
-      if (line.trim()) {
-        nodes.push(<p key={i}>{renderInline(line)}</p>);
+      if (trimmed) {
+        nodes.push(<p key={i}>{renderInline(trimmed)}</p>);
       }
     }
   });
