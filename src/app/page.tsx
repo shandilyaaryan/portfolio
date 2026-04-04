@@ -4,6 +4,7 @@ import { Overview } from "@/components/overview";
 import { SocialLinks } from "@/components/social-links";
 import { About } from "@/components/about";
 import { GitHubContributions } from "@/components/github-contributions";
+import { TechStack } from "@/components/tech-stack";
 import { Separator } from "@/components/separator";
 
 export default function Home() {
@@ -18,6 +19,8 @@ export default function Home() {
       <About />
       <Separator />
       <GitHubContributions />
+      <Separator />
+      <TechStack />
       <Separator />
     </main>
   );
