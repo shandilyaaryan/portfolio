@@ -4,7 +4,7 @@ export type Position = {
   employmentType: string;
   start: string;
   end?: string;
-  description?: string;
+  bullets?: string[];
   skills?: string[];
 };
 
@@ -13,6 +13,7 @@ export type Experience = {
   companyName: string;
   companyWebsite?: string;
   companyLogo?: string;
+  location?: string;
   isCurrentEmployer?: boolean;
   positions: Position[];
 };
@@ -23,6 +24,7 @@ export const EXPERIENCES: Experience[] = [
     companyName: "Dataring",
     companyWebsite: "https://getdataring.com",
     companyLogo: "/dataring-icon.png",
+    location: "New York, USA (Remote)",
     isCurrentEmployer: true,
     positions: [
       {
@@ -30,8 +32,11 @@ export const EXPERIENCES: Experience[] = [
         title: "Software Engineer",
         employmentType: "Full-time",
         start: "Jul 2026",
-        description:
-          "Full-time engineer owning backend systems and ERP architecture. Leading development of production workflows, CRM features, and internal tooling on Frappe.",
+        bullets: [
+          "Promoted to full-time engineer; now owning backend systems and ERP architecture end-to-end.",
+          "Leading development of production workflows, CRM features, and internal tooling on Frappe.",
+          "Collaborating directly with stakeholders to scope, design, and ship features.",
+        ],
         skills: ["Frappe", "Python", "ERP", "CRM", "JavaScript"],
       },
       {
@@ -40,8 +45,11 @@ export const EXPERIENCES: Experience[] = [
         employmentType: "Internship",
         start: "Jan 2026",
         end: "Jun 2026",
-        description:
-          "Built and maintained production-grade ERP and CRM workflows using Frappe. Contributed to backend architecture and business logic across multiple modules.",
+        bullets: [
+          "Built and maintained production-grade ERP and CRM workflows using Frappe.",
+          "Contributed to backend architecture and business logic across multiple modules.",
+          "Shipped internal tooling that reduced manual data-entry overhead.",
+        ],
         skills: ["Frappe", "Python", "ERP", "CRM", "JavaScript"],
       },
     ],
