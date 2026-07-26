@@ -6,6 +6,7 @@ import { ThemeProvider } from "next-themes";
 import { Navbar } from "@/components/Navbar";
 import { SiteFooter } from "@/components/site-footer";
 import { ScrollToTop } from "@/components/scroll-to-top";
+
 import "./globals.css";
 
 const pixelifySans = Pixelify_Sans({

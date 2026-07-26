@@ -2,100 +2,133 @@
 
 import { motion, useMotionValue, useSpring } from "motion/react";
 
-const GRID = 32;
-const COLS = 5;
-const ROWS = 8;
-const LETTER_WIDTH = COLS * GRID; // 160
-const GAP = 150;                  // wide gap to match ~5.5:1 aspect ratio
+const G = 32; // grid unit
+const W = 5 * G; // letter width = 160
+const GAP = 32;
 
-// 5×8 pixel grid for each letter (1 = filled)
+// 5-wide × 8-tall pixel bitmaps (row 7 = empty padding)
+// Letters fill rows 0-6; bottom rows land in gradient zone (hidden by overflow)
 const LETTERS: Record<string, number[][]> = {
-  A: [
-    [0, 0, 1, 0, 0],
-    [0, 1, 0, 1, 0],
+  s: [
+    [0, 1, 1, 1, 0],
     [1, 0, 0, 0, 1],
-    [1, 1, 1, 1, 1],
+    [1, 0, 0, 0, 0],
+    [0, 1, 1, 0, 0],
+    [0, 0, 0, 1, 0],
+    [0, 0, 0, 0, 1],
+    [0, 1, 1, 1, 0],
+    [0, 0, 0, 0, 0],
+  ],
+  h: [
+    [1, 0, 0, 0, 0],
+    [1, 0, 0, 0, 0],
+    [1, 0, 0, 0, 0],
+    [1, 1, 1, 1, 0],
     [1, 0, 0, 0, 1],
     [1, 0, 0, 0, 1],
     [1, 0, 0, 0, 1],
     [0, 0, 0, 0, 0],
   ],
-  R: [
-    [1, 1, 1, 1, 0],
-    [1, 0, 0, 0, 1],
-    [1, 0, 0, 0, 1],
-    [1, 1, 1, 1, 0],
-    [1, 0, 1, 0, 0],
+  a: [
+    [0, 1, 1, 0, 0],
     [1, 0, 0, 1, 0],
+    [1, 0, 0, 1, 0],
+    [0, 1, 1, 1, 0],
+    [1, 0, 0, 1, 0],
+    [1, 0, 0, 1, 0],
+    [0, 1, 1, 1, 1],
+    [0, 0, 0, 0, 0],
+  ],
+  n: [
+    [1, 1, 1, 1, 0],
+    [1, 0, 0, 0, 1],
+    [1, 0, 0, 0, 1],
+    [1, 0, 0, 0, 1],
+    [1, 0, 0, 0, 1],
+    [1, 0, 0, 0, 1],
     [1, 0, 0, 0, 1],
     [0, 0, 0, 0, 0],
   ],
-  Y: [
+  d: [
+    [0, 0, 0, 1, 0],
+    [0, 0, 0, 1, 0],
+    [0, 1, 1, 1, 0],
+    [1, 0, 0, 1, 0],
+    [1, 0, 0, 1, 0],
+    [1, 0, 0, 1, 0],
+    [0, 1, 1, 1, 0],
+    [0, 0, 0, 0, 0],
+  ],
+  i: [
+    [0, 0, 1, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 1, 1, 0, 0],
+    [0, 0, 1, 0, 0],
+    [0, 0, 1, 0, 0],
+    [0, 0, 1, 0, 0],
+    [0, 1, 1, 1, 0],
+    [0, 0, 0, 0, 0],
+  ],
+  l: [
+    [0, 1, 1, 0, 0],
+    [0, 0, 1, 0, 0],
+    [0, 0, 1, 0, 0],
+    [0, 0, 1, 0, 0],
+    [0, 0, 1, 0, 0],
+    [0, 0, 1, 0, 0],
+    [0, 1, 1, 1, 0],
+    [0, 0, 0, 0, 0],
+  ],
+  y: [
     [1, 0, 0, 0, 1],
     [1, 0, 0, 0, 1],
     [0, 1, 0, 1, 0],
     [0, 0, 1, 0, 0],
     [0, 0, 1, 0, 0],
     [0, 0, 1, 0, 0],
-    [0, 0, 1, 0, 0],
-    [0, 0, 0, 0, 0],
-  ],
-  N: [
-    [1, 0, 0, 0, 1],
-    [1, 1, 0, 0, 1],
-    [1, 0, 1, 0, 1],
-    [1, 0, 0, 1, 1],
-    [1, 0, 0, 0, 1],
-    [1, 0, 0, 0, 1],
-    [1, 0, 0, 0, 1],
+    [0, 1, 1, 0, 0],
     [0, 0, 0, 0, 0],
   ],
 };
 
-const TEXT = ["A", "R", "Y", "A", "N"];
-const VB_W = 1 + TEXT.length * LETTER_WIDTH + (TEXT.length - 1) * GAP; // 929
-const VB_H = 1 + ROWS * GRID; // 257
-const DEFAULT_GRADIENT_X = Math.round(VB_W / 2);
+const TEXT = ["s", "h", "a", "n", "d", "i", "l", "y", "a"];
+const VB_W = 1 + TEXT.length * W + (TEXT.length - 1) * GAP; // 1697
+const VB_H = 1 + 8 * G; // 257
+const DEFAULT_X = Math.round(VB_W / 2);
 
-type Rect = { x: number; y: number };
-
-function getLetterRects(letter: string, letterIndex: number): Rect[] {
-  const grid = LETTERS[letter];
-  if (!grid) return [];
-  const offsetX = 1 + letterIndex * (LETTER_WIDTH + GAP);
-  const rects: Rect[] = [];
-  for (let row = 0; row < grid.length; row++) {
-    for (let col = 0; col < grid[row].length; col++) {
-      if (grid[row][col]) {
-        rects.push({ x: offsetX + col * GRID, y: 1 + row * GRID });
-      }
-    }
-  }
-  return rects;
+function buildPath(): string {
+  const segs: string[] = [];
+  TEXT.forEach((ch, idx) => {
+    const bmp = LETTERS[ch];
+    if (!bmp) return;
+    const ox = 1 + idx * (W + GAP);
+    bmp.forEach((row, r) => {
+      row.forEach((cell, c) => {
+        if (!cell) return;
+        const x = ox + c * G;
+        const y = 1 + r * G;
+        segs.push(`M${x} ${y}H${x + G}V${y + G}H${x}Z`);
+      });
+    });
+  });
+  return segs.join("");
 }
 
-const allRects = TEXT.flatMap((letter, i) => getLetterRects(letter, i));
+const PATH = buildPath();
 
 export function FooterLogotype() {
-  const gradientX1Raw = useMotionValue(DEFAULT_GRADIENT_X);
-  const gradientX1 = useSpring(gradientX1Raw, {
-    stiffness: 200,
-    damping: 30,
-    mass: 0.5,
-  });
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const normalizedX = ((e.clientX - rect.left) / rect.width) * VB_W;
-    gradientX1Raw.set(Math.max(0, Math.min(VB_W, normalizedX)));
-  };
+  const rawX = useMotionValue(DEFAULT_X);
+  const gradX = useSpring(rawX, { stiffness: 200, damping: 30, mass: 0.5 });
 
   return (
     <div className="screen-line-bottom after:z-1 after:bg-foreground/10">
       <div
         className="overflow-hidden"
-        onMouseMove={handleMouseMove}
-        onMouseLeave={() => gradientX1Raw.set(DEFAULT_GRADIENT_X)}
+        onMouseMove={(e) => {
+          const r = e.currentTarget.getBoundingClientRect();
+          rawX.set(Math.max(0, Math.min(VB_W, ((e.clientX - r.left) / r.width) * VB_W)));
+        }}
+        onMouseLeave={() => rawX.set(DEFAULT_X)}
       >
         <div className="flex w-full translate-y-[37.5%] items-center justify-center">
           <svg
@@ -104,38 +137,15 @@ export function FooterLogotype() {
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            {/* Filled blocks with gradient */}
-            {allRects.map((r, i) => (
-              <rect
-                key={`f${i}`}
-                x={r.x}
-                y={r.y}
-                width={GRID}
-                height={GRID}
-                fill="url(#aryan_gradient)"
-              />
-            ))}
-
-            {/* Stroke outlines */}
-            {allRects.map((r, i) => (
-              <rect
-                key={`s${i}`}
-                x={r.x}
-                y={r.y}
-                width={GRID}
-                height={GRID}
-                fill="none"
-                className="stroke-foreground/10"
-                strokeWidth="2"
-              />
-            ))}
+            <path d={PATH} fill="url(#fg)" />
+            <path d={PATH} fill="none" className="stroke-foreground/10" strokeWidth="2" />
 
             <defs>
               <motion.linearGradient
-                id="aryan_gradient"
-                x1={gradientX1}
+                id="fg"
+                x1={gradX}
                 y1="1"
-                x2={DEFAULT_GRADIENT_X}
+                x2={DEFAULT_X}
                 y2={VB_H}
                 gradientUnits="userSpaceOnUse"
               >
