@@ -43,7 +43,7 @@ export function Overview() {
         ))}
 
         <IntroItem icon={<GraduationCapIcon />}>
-          BCA, 6th Semester
+          BCA Graduate
         </IntroItem>
 
         <div className="grid gap-x-4 gap-y-2.5 sm:grid-cols-2">

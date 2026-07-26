@@ -17,7 +17,7 @@ const pixelifySans = Pixelify_Sans({
 
 export const metadata: Metadata = {
   title: "Aryan Shandilya — Software Engineer",
-  description: "Portfolio of Aryan Shandilya, Software Engineer Intern at Dataring.",
+  description: "Portfolio of Aryan Shandilya, Software Engineer at Dataring.",
 };
 
 export default function RootLayout({
