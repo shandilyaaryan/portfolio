@@ -32,18 +32,11 @@ export function SiteFooter() {
               <span className="text-success select-none mr-1">//</span>
               {USER.bio}
             </p>
-            <div className="space-y-1 mb-4">
+            <div className="space-y-1">
               <p className="font-mono text-xs text-muted-foreground">{USER.location}</p>
               <p className="font-mono text-xs text-muted-foreground">
                 {USER.timeZone.replace(/_/g, " ")}
               </p>
-            </div>
-            <div className="inline-flex items-center gap-2">
-              <span className="relative flex size-1.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-success opacity-60" />
-                <span className="relative inline-flex size-1.5 rounded-full bg-success" />
-              </span>
-              <span className="font-mono text-xs text-muted-foreground">Open to opportunities</span>
             </div>
           </div>
 

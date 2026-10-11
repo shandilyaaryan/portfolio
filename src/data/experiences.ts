@@ -24,7 +24,7 @@ export const EXPERIENCES: Experience[] = [
     companyName: "Dataring",
     companyWebsite: "https://getdataring.com",
     companyLogo: "/dataring-icon.png",
-    location: "New York, USA (Remote)",
+    location: "Remote",
     isCurrentEmployer: true,
     positions: [
       {
@@ -33,11 +33,13 @@ export const EXPERIENCES: Experience[] = [
         employmentType: "Full-time",
         start: "Jul 2026",
         bullets: [
-          "Promoted to full-time engineer; now owning backend systems and ERP architecture end-to-end.",
-          "Leading development of production workflows, CRM features, and internal tooling on Frappe.",
-          "Collaborating directly with stakeholders to scope, design, and ship features.",
+          "Own engineering for a US client's CRM, ERP and companion apps on Frappe: requirements, design, build, release and support.",
+          "Designed and built a new app from a short brief in about ten weeks, with role-based access, third-party integrations and Playwright end-to-end tests.",
+          "Leading a ground-up rebuild of the CRM, from the data model to the interface.",
+          "Work with the client's team directly: scoping requests, reporting progress, and fixing what breaks.",
+          "185+ pull requests merged across five repositories since January 2026.",
         ],
-        skills: ["Frappe", "Python", "ERP", "CRM", "JavaScript"],
+        skills: ["Frappe", "Python", "Vue", "JavaScript", "Playwright"],
       },
       {
         id: "dataring-swe-intern",
@@ -46,11 +48,11 @@ export const EXPERIENCES: Experience[] = [
         start: "Jan 2026",
         end: "Jun 2026",
         bullets: [
-          "Built and maintained production-grade ERP and CRM workflows using Frappe.",
-          "Contributed to backend architecture and business logic across multiple modules.",
-          "Shipped internal tooling that reduced manual data-entry overhead.",
+          "Raised 140+ pull requests across the CRM and ERP codebases in under six months.",
+          "Built production features on Frappe for both products: workflows, business logic, integrations and the Vue front end.",
+          "Converted to a full-time role at the end of the internship.",
         ],
-        skills: ["Frappe", "Python", "ERP", "CRM", "JavaScript"],
+        skills: ["Frappe", "Python", "Vue", "JavaScript"],
       },
     ],
   },

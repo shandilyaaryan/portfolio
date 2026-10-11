@@ -16,48 +16,46 @@ export const PROJECTS: Project[] = [
   {
     id: "payment-aggregator",
     title: "Payment Aggregator",
-    period: { start: "2.2026" },
+    period: { start: "12.2025", end: "12.2025" },
     link: "https://github.com/shandilyaaryan/payment-aggregator",
-    skills: ["Bun", "TypeScript", "Express", "MongoDB", "EJS", "Zod", "Docker", "Webhooks"],
+    skills: ["Bun", "TypeScript", "Express", "MongoDB", "Mongoose", "EJS", "Webhooks"],
     description:
-      `Scalable payment middleware connecting merchants with multiple providers, designed for reliable and fault-tolerant transaction processing.
+      `Payment middleware that gives merchants one API in front of an upstream payment gateway.
 
-  - Unified API layer for multiple payment gateways
-  - Idempotent request handling to prevent duplicate transactions
-  - Retry and failure recovery mechanisms
-  - Webhook-based asynchronous event processing
-  - Ensured safe retries and consistency using idempotency keys across distributed requests
-  - Built for high availability and scalable transaction flow`,
+  - Provider interface, so a new gateway is one class; GlobalPay is implemented
+  - Merchant authentication middleware on payment creation
+  - Webhook handler that verifies the gateway's signature and updates the transaction
+  - Forwards the result to the merchant's registered callback URL
+  - Small admin UI for gateway configuration and debugging`,
   },
   {
     id: "collabwrite",
     title: "Collabwrite",
-    period: { start: "11.2024" },
+    period: { start: "11.2024", end: "12.2025" },
     link: "https://github.com/shandilyaaryan/collabwrite",
-    skills: ["Next.js", "Convex", "Liveblocks", "Tiptap", "TypeScript", "Shadcn UI", "Vercel"],
-    description: `Real-time collaborative editor supporting multi-user editing with live presence, cursor tracking, and conflict resolution. Backed by [Convex](https://convex.dev) for real-time sync and conflict handling.
+    skills: ["Next.js", "Convex", "Liveblocks", "Tiptap", "Clerk", "TypeScript", "Shadcn UI", "Vercel"],
+    description: `Collaborative document editor in the style of Google Docs: several people editing one document, with live cursors and comment threads.
 
-- Real-time editing with WebSocket-based synchronization
-- Live cursors, presence indicators via [Liveblocks](https://liveblocks.io), and threaded discussions
-- Rich text editing powered by [Tiptap](https://tiptap.dev)
-- Handles concurrent edits across multiple users with low-latency sync
-- Designed for consistent state across distributed clients
-- Optimized for low-latency collaboration experience`,
+- Documents stored and queried in [Convex](https://convex.dev)
+- Multi-user editing, live cursors and presence through [Liveblocks](https://liveblocks.io)
+- Threaded comments anchored to the text
+- Rich text editing built on [Tiptap](https://tiptap.dev), with custom extensions
+- Sign-in with Clerk`,
     isExpanded: true,
   },
   {
     id: "project-camp",
     title: "Project Camp",
-    period: { start: "1.2026" },
+    period: { start: "12.2025", end: "1.2026" },
     link: "https://github.com/shandilyaaryan/project-camp",
-    skills: ["Bun", "Express", "PostgreSQL", "Prisma", "TypeScript", "Redis", "Zod", "Docker"],
+    skills: ["Bun", "Express", "MongoDB", "Mongoose", "TypeScript", "Redis", "Zod", "Docker"],
     description:
-      `Backend system for managing team workflows, tasks, and collaboration with scalable architecture and role-based access control. Focused on clean architecture and scalable system design.
+      `REST API for team project management: projects, members, tasks and subtasks.
 
-- Structured APIs for projects, tasks, and comments
-- Role-based access control and authentication
-- Activity logs and notification system
-- Modular and scalable database schema design
-- Designed for multi-user, real-world usage scenarios`,
+- JWT authentication with email verification
+- Role-based access per project: add members, change roles
+- Tasks with status, priority, subtasks and file attachments (Cloudinary)
+- Redis-backed rate limiting middleware
+- Request validation with Zod; API tests with Supertest`,
   },
 ];

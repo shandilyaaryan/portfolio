@@ -4,7 +4,6 @@ import {
   LinkIcon,
   CodeXmlIcon,
   GraduationCapIcon,
-  PhoneIcon,
   MarsIcon,
 } from "lucide-react";
 import { USER } from "@/data/user";
@@ -60,12 +59,6 @@ export function Overview() {
 
           <IntroItem icon={<LocalTimeIcon />}>
             <LocalTime />
-          </IntroItem>
-
-          <IntroItem icon={<PhoneIcon />}>
-            <a href={`tel:${USER.phone}`} className="underline-offset-4 hover:underline">
-              {USER.phone}
-            </a>
           </IntroItem>
 
           <IntroItem icon={<MailIcon />}>

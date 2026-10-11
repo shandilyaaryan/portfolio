@@ -5,10 +5,9 @@ export const USER = {
   username: "shandilyaaryan",
   pronouns: "he/him",
   gender: "male",
-  phone: "+91 8168347168",
   bio: "Building scalable, real-world applications. Small details matter.",
   flipSentences: [
-    "Backend-focused Web Developer.",
+    "Full-stack Software Engineer.",
     "Software Engineer @ Dataring",
     "BCA Graduate",
   ],
@@ -27,11 +26,11 @@ export const USER = {
     },
   ],
   about: `
-- **Backend-focused web developer** who enjoys building scalable, real-world applications.
-- Specializes in modern full-stack development using **Next.js**, **Node.js**, and **Convex**.
-- Particularly interested in backend architecture, real-time systems, and production-grade engineering.
-- Currently working at **Dataring** as a Software Engineer, building ERP and CRM systems on **Frappe**.
-- BCA graduate, continuously deepening knowledge in backend architecture and system design.
+- **Full-stack software engineer** working in **Python**, **TypeScript** and **Vue**.
+- At **Dataring** I build and run CRM and ERP software on **Frappe** for a US client, from the first requirements call to production support.
+- I work with the client's team directly: scoping requests, shipping them, and fixing what breaks.
+- Outside work I build backend and real-time projects in **Node.js**, **Next.js** and **Convex**.
+- BCA graduate.
   `.trim(),
   avatar: "https://avatars.githubusercontent.com/u/64391491?s=400&u=9ffe76c447275d73fddcd4216ccde1d0ca6291e8&v=4",
   timeZone: "Asia/Kolkata",
